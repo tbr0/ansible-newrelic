@@ -1,3 +1,0 @@
----
-# Setting New Relic repo file.
-newrelic_repo_file: /etc/yum.repos.d/newrelic.repo
