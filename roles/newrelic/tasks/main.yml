@@ -3,7 +3,4 @@
 
 #- include_vars: "{{ansible_os_family}}.yml" 
 
-- include: install.yml
-- include: domain.yml
-- include: lamp.yml
-- include: firewall.yml
+- include: repo.yml
