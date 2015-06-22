@@ -1,2 +1,5 @@
----
-# All variables defined in group_vars for now.
+repo_path: /etc/yum.d/sources.d/
+when: ansible_distribution = "RedHat" or "Red Hat Enterprise Linux"
+
+repot_path: /etc/apt/sources.d/
+when: ansible_distribution = "Debian" or "Ubuntu"
