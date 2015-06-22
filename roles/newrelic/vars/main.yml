@@ -1,5 +1,2 @@
-repo_path: /etc/yum.d/sources.d/
-when: ansible_distribution = "RedHat" or "Red Hat Enterprise Linux"
-
-repot_path: /etc/apt/sources.d/
-when: ansible_distribution = "Debian" or "Ubuntu"
+rhel_repo_path: /etc/yum.repos.d/
+debian_repo_path: /etc/apt/sources.d/
