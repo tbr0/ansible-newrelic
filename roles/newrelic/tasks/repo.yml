@@ -1,4 +1,3 @@
 ---
 - name: Add New Relic repo
-  template: src=RedHat/newrelic.repo.j2 dest={{ rhel_repo_path }}/newrelic.repo
-  when: ansible_os_family == 'RedHat'
+  template: src={{ ansible_os_family }}/newrelic.repo.j2 dest={{ repo_path }}/newrelic.repo

@@ -1,3 +1,2 @@
-rhel_repo_path: /etc/yum.repos.d/
-debian_repo_path: /etc/apt/sources.d/
+---
 license_key: ""

@@ -1,7 +1,8 @@
 ---
 - name: Run nrsysmond-config with provided license key.
   shell: /usr/sbin/nrsysmond-config --set license_key="{{ license_key }}" > /tmp/nrsysmond-config.log
-  notify: restart newrelic-sysmond
+  notify: 
+    - restart newrelic-sysmond
   ignore_errors: yes
 - debug: msg="{{ lookup('file', '/tmp/nrsysmond-config.log') }}"
 

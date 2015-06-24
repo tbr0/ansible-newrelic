@@ -1,16 +1,14 @@
 ---
-- name: restart apache
-  service: name=apache2 state=restarted
-  when: ansible_os_family == 'Debian'
+#- name: restart apache
+#  service: name=apache2 state=restarted
+#  when: ansible_os_family == 'Debian'
 
 - name: restart apache
-  service: name=httpd state=restarted
-  when: ansible_os_family == 'RedHat'
+  service: name={{ apache }} state=restarted
 
 - name: restart php-fpm
   service: name=php-fpm state=restarted
-  when: ansible_os_family == 'RedHat'
+  ignore_errors: yes
 
 - name: restart newrelic-sysmond
   service: name=newrelic-sysmond state=restarted
-  when: ansible_os_family == 'RedHat'

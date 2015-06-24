@@ -3,3 +3,14 @@
   user: root
   roles: 
     - newrelic
+
+#  tasks:
+#  - group_by: key={{ ansible_os_family }}
+#
+#- hosts: RedHat
+#  user: root
+#  gather_facts: false
+#
+#- hosts: Debian
+#  user: root
+#  gather_facts: false
