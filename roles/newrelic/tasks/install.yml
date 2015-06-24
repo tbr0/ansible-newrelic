@@ -9,9 +9,16 @@
 - name: Install New Relic PHP Agent and System Monitor for RHEL
   yum: pkg={{ item }} state=installed
   with_items:
-  - newrelic-php5
-  - newrelic-sysmond
+    - newrelic-php5
+    - newrelic-sysmond
   when: ansible_os_family == 'RedHat'
+
+- name: Install New Relic PHP Agent and System Monitor for Deb
+  apt: pkg={{ item }} state=installed update_cache=yes
+  with_items:
+    - newrelic-php5
+    - newrelic-sysmond
+  when: ansible_os_family == 'Debian'
 
 #- name: Check for PHP installation for RHEL
 #  shell: rpm -q php5 || /bin/true
