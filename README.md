@@ -17,8 +17,8 @@ with setting the correct application name.
   * - [ ] Quality Assurance
 * - [ ] Ubuntu 14.04 Support
   * - [ ] Quality Assurance
-* - [ ] CentOS 6.5 Support
-  * - [ ] Quality Assurance
+* - [x] CentOS 6.5 Support
+  * - [x] Quality Assurance
 * - [ ] Debian 7 Support
   * - [ ] Quality Assurance
 
