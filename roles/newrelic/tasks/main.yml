@@ -5,3 +5,7 @@
 
 - include: repo.yml 
 - include: install.yml
+- include: newrelic-install.yml
+  when: license_key != ""
+- include: nrsysmond-config.yml
+  when: license_key != ""

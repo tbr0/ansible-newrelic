@@ -1,0 +1,13 @@
+---
+- name: Run newrelic-install with provided license key.
+  environment:
+    NR_INSTALL_KEY: "{{ license_key }}"
+  shell: /usr/bin/newrelic-install install > /tmp/newrelic-install.log
+  notify: 
+    - restart apache
+    - restart php-fpm
+
+- debug: msg="{{ lookup('file', '/tmp/newrelic-install.log') }}"
+
+- name: Cleanup log
+  shell: rm -f /tmp/newrelic-install.log

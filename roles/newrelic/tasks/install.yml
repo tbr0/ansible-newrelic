@@ -14,22 +14,21 @@
   when: ansible_os_family == 'RedHat'
 
 #- name: Check for PHP installation for RHEL
-#  command: rpm -q php5
+#  shell: rpm -q php5 || /bin/true
 #  register: rpm_php5_output
+#  ignore_errors: yes
+#- debug: msg="{{ rpm_php5_output.stdout }}"
 
-- name: Prompt for license key.
-  #fail: msg="New Relic key not provided, stopping."
-  #when: newrelic_license_key is not defined
-  pause: prompt="Please enter your New Relic license key:"
-  register: newrelic_license_key
-#- debug: var=newrelic_license_key
-  environment: 
-    NR_INSTALL_KEY: "{{ newrelic_license_key }}"
+#- name: Notify user of missing PHP.
+#  debug: msg="PHP is not installed, skipping New Relic PHP agent setup."
+#  when: rpm_php5_output.stdout.find('is not installed') == true
 
-- name: Run newrelic-install with provided license key.
-  command: /usr/bin/newrelic-install install
-  register: newrelic_install
-- debug: var=newrelic_install
+#- name: Run newrelic-install with provided license key.
+#  shell: /usr/bin/newrelic-install install > /tmp/newrelic-install.log
+# when: rpm_php5_output.stdout.find('is not installed') == false
+#- debug: msg="{{ lookup('file', '/tmp/newrelic-install.log') }}"
+  
+ 
 
 #- name: regather facts
 #  setup:
@@ -50,7 +49,7 @@
 #- name: Install apache2 for Debian based
 #  apt: pkg=apache2 state=installed update_cache=true
 #  when: ansible_os_family == 'Debian'
-#
+
 #- name: copy apache2.conf template - 12.04
 #  template: src=Debian/v22/apache2.conf.j2 dest=/etc/apache2/apache2.conf
 #  when: ansible_os_family == 'Debian' and ansible_lsb.release == '12.04' or ansible_lsb.major_release == '7'
