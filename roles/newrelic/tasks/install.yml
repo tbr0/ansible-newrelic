@@ -2,22 +2,29 @@
 # Generic Playbook to install and configure apache as an example
 #
 
-- name: Download New Relic yum GPG key for RHEL
+- name: Install New Relic GPG key - RedHat6
   get_url: url="http://yum.newrelic.com/548C16BF.gpg" dest="/etc/pki/rpm-gpg/RPM-GPG-KEY-NewRelic" mode=0640
   when: ansible_os_family == 'RedHat'
 
-- name: Install New Relic PHP Agent and System Monitor for RHEL
+- name: Install New Relic PHP Agent and System Monitor - RedHat6
   yum: pkg={{ item }} state=installed
   with_items:
     - newrelic-php5
     - newrelic-sysmond
   when: ansible_os_family == 'RedHat'
 
-- name: Install New Relic PHP Agent and System Monitor for Deb
+- name: Download New Relic GPG key - Debian
+  shell: wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add -
+  when: ansible_os_family == 'Debian'
+
+- name: Install New Relic PHP Agent and System Monitor - Debian
   apt: pkg={{ item }} state=installed update_cache=yes
   with_items:
     - newrelic-php5
     - newrelic-sysmond
+  notify: 
+    - restart apache
+    - restart php-fpm
   when: ansible_os_family == 'Debian'
 
 #- name: Check for PHP installation for RHEL

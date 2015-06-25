@@ -1,0 +1,3 @@
+---
+- name: Preseed newrelic license key for dpkg
+  shell: echo newrelic-php5 newrelic-php5/license-key string "{{ license_key }}" | debconf-set-selections

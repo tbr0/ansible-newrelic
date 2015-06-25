@@ -4,8 +4,14 @@
 - include_vars: "{{ansible_os_family}}.yml" 
 
 - include: repo.yml 
+
+- include: preseed.yml
+  when: license_key != "" and ansible_os_family  == "Debian"
+
 - include: install.yml
+
 - include: newrelic-install.yml
-  when: license_key != ""
+  when: license_key != "" and ansible_os_family == "RedHat"
+
 - include: nrsysmond-config.yml
   when: license_key != ""
