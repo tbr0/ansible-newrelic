@@ -6,7 +6,7 @@
 - include: repo.yml 
 
 - include: preseed.yml
-  when: license_key != "" and ansible_os_family  == "Debian"
+  when: license_key != "" and ansible_os_family == "Debian"
 
 - include: install.yml
 
