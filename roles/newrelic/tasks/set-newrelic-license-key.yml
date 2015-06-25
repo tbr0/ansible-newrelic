@@ -3,7 +3,7 @@
   stat: path=/etc/php5/apache2/conf.d/newrelic.ini
   register: newrelic_ini
 
-- name: Trigger failure when newrelic.ini doesn't exist. - Debian
+- name: Trigger failure when newrelic.ini does not exist. - Debian
   fail: msg="Something went wrong, a file expecting to exist does not. php not installed?"
   when: not newrelic_ini.stat.exists
 
