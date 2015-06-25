@@ -4,17 +4,15 @@
 - include_vars: "{{ansible_os_family}}.yml" 
 
 - include: fail.yml
-  when: license_key not defined
+  when: license_key is not defined
 
 - include: repo.yml 
-
 - include: install.yml
 
 - include: newrelic-install.yml
-  when: license_key != "" and ansible_os_family == "RedHat"
+  when: ansible_os_family == "RedHat"
 
 - include: nrsysmond-config.yml
-  when: license_key != ""
 
 - include: set-newrelic-license-key.yml
-  when: license_key != "" and ansible_os_family == "Debian"
+  when: ansible_os_family == "Debian"
