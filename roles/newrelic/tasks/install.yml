@@ -14,8 +14,12 @@
   when: ansible_os_family == 'RedHat'
 
 - name: Download New Relic GPG key - Debian
-  shell: wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add -
+  apt_key: url=https://download.newrelic.com/548C16BF.gpg state=present
   when: ansible_os_family == 'Debian'
+
+- name: Preseed New Relic PHP Agent - Debian
+  debconf: name="newrelic-php5" question="newrelic-php5/license-key" value={{ license_key }} vtype=string
+  when: ansible_os_family == 'Debian' and license_key != ""
 
 - name: Install New Relic PHP Agent and System Monitor - Debian
   apt: pkg={{ item }} state=installed update_cache=yes
