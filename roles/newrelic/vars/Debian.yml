@@ -1,4 +1,2 @@
 repo_path: /etc/apt/sources.d/
 apache: apache2
-newrelic_ini: "{{ lookup('file', '/etc/php5/apache2/conf.d/newrelic.ini') }}"
-#newrelic_ini_license_key: newrelic_ini.stdout.find

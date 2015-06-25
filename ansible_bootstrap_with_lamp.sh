@@ -7,7 +7,7 @@ if [ -f /etc/redhat-release ]; then
   ansible-playbook -i hosts site.yml
 fi
 if [ -f /etc/debian_version ]; then
-  sleep 60
+  sleep 120
   apt-get update && apt-get install python-apt python-pip build-essential python-dev git -y
   pip install paramiko PyYAML jinja2 httplib2 ansible
   git clone https://github.com/rackspace-orchestration-templates/lamp

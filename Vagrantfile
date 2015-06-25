@@ -1,7 +1,7 @@
 Vagrant.configure("2") do |config|
   # The box is optional in newer versions of Vagrant
   # config.vm.box = "dummy"
-  #config.vm.provision "shell", path: "ansible_bootstrap_with_lamp.sh"
+  config.vm.provision "shell", path: "ansible_bootstrap_with_lamp.sh"
   #config.vm.provision :ansibleLocal, :playbook => "site.yml", :raw_arguments => "-i /tmp/vagrant-ansible-local/hosts"
   config.ssh.username = "root"
   config.ssh.private_key_path = "~/.ssh/id_rsa"

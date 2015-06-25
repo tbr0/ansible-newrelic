@@ -4,7 +4,7 @@
 - include_vars: "{{ansible_os_family}}.yml" 
 
 - include: fail.yml
-  when: license_key is not defined
+  when: license_key is not defined or license_key = ""
 
 - include: repo.yml 
 - include: install.yml
