@@ -9,3 +9,6 @@
 
 - name: Replace line with license key. - Debian
   lineinfile: dest=/etc/php5/apache2/conf.d/newrelic.ini regexp="newrelic.license = \"\"" line="newrelic.license = \"{{ license_key }}\""
+  notify:
+    - restart apache
+    - restart php-fpm
