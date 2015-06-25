@@ -1,6 +1,5 @@
 ---
-# Generic Playbook to install and configure apache as an example
-#
+# Playbook to install New Relic sysmond and agent.
 
 - name: Install New Relic GPG key - RedHat6
   get_url: url="http://yum.newrelic.com/548C16BF.gpg" dest="/etc/pki/rpm-gpg/RPM-GPG-KEY-NewRelic" mode=0640

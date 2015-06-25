@@ -5,9 +5,6 @@
 
 - include: repo.yml 
 
-#- include: preseed.yml
-#  when: license_key != "" and ansible_os_family == "Debian"
-
 - include: install.yml
 
 - include: newrelic-install.yml
@@ -15,3 +12,6 @@
 
 - include: nrsysmond-config.yml
   when: license_key != ""
+
+- include: set-newrelic-license-key.yml
+  when: license_key != "" and ansible_os_family == "Debian"
