@@ -1,5 +1,5 @@
 ---
-# Generic Playbook to install and configure apache as an example
+# Main tasks handler for the New Relic installation and configuration.
 
 - include_vars: "{{ansible_os_family}}.yml" 
 
